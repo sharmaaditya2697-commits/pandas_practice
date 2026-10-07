@@ -1,0 +1,466 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tranzita Systems - Python Data Engineering Interview</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background: #000;
+        color: #fff;
+        padding: 30px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        border-bottom: 8px solid #ff007f;
+      }
+
+      section {
+        padding: 20px 40px;
+      }
+
+      .question {
+        background: #fff;
+        border: 4px solid #000;
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: 6px 6px 0px #000;
+      }
+
+      .question h2 {
+        margin-top: 0;
+      }
+
+      .schema {
+        background: #fffbe6;
+        border: 2px dashed #000;
+        padding: 10px 16px;
+        font-family: monospace;
+        font-size: 13px;
+        margin-bottom: 30px;
+        display: inline-block;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 13px;
+        color: #888;
+        border-top: 4px solid #000;
+        margin-top: 10px;
+        background: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      Tranzita Systems — Python Data Engineering Interview
+      <br />
+      <span style="font-size: 16px; font-weight: normal">
+        Data Engineering Track | Python, Pandas & NumPy
+      </span>
+    </header>
+
+    <section>
+      <div class="schema">
+        <b>Dataset Schema:</b>
+        First Name | Gender | Start Date | Last Login Time | Salary | Bonus % |
+        Senior Management | Team
+      </div>
+
+      <!-- Question 1 -->
+
+      <div class="question">
+        <h2>1. Exploratory Data Analysis and Data Quality Assessment</h2>
+        <ul>
+          <li>
+            Generate a statistical summary of the given dataset (Mean, Mode,
+            Median, Count).
+          </li>
+          <li>
+            Find and display the data type of each columns present in the
+            dataset.
+          </li>
+          <li>Determine the dataset dimensions (total rows and columns).</li>
+        </ul>
+        <p><b>Example:</b></p>
+
+        <p><b>Example - Statistical Summary:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>Column</th>
+            <th>Count</th>
+            <th>Mean</th>
+            <th>Median</th>
+            <th>Mode</th>
+          </tr>
+          <tr>
+            <td>Salary</td>
+            <td>5</td>
+            <td>105908.00</td>
+            <td>101004.00</td>
+            <td>61933</td>
+          </tr>
+        </table>
+
+        <p><b>Example - Column Data Types:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>Column Name</th>
+            <th>Data Type</th>
+          </tr>
+          <tr>
+            <td>Salary</td>
+            <td>int64</td>
+          </tr>
+        </table>
+
+        <p><b>Example - Dataset Dimensions:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>Total Rows</th>
+            <th>Total Columns</th>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>8</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 2 -->
+
+      <div class="question">
+        <h2>2. Missing Value Treatment</h2>
+        <ul>
+          <li>
+            Calculate the number of missing (null) values present in each column
+            and display the result.
+          </li>
+
+          <li>
+            Replace missing values (if exists) in all non-numerical columns with
+            <code>'Unknown'</code>.
+          </li>
+          <li>
+            Replace missing values (if exists) in all numerical columns with
+            <code>0</code>.
+          </li>
+        </ul>
+       <p><b>Example - Missing Values Summary:</b></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Column Name</th>
+    <th>Null Count</th>
+  </tr>
+  <tr>
+    <td>Team</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p><b>Example - Before Replacing Non-Numerical Nulls:</b></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>First Name</th>
+    <th>Gender</th>
+    <th>Team</th>
+  </tr>
+  <tr>
+    <td>Thomas</td>
+    <td>Male</td>
+    <td>null</td>
+  </tr>
+</table>
+
+<p><b>Example - After Replacing Non-Numerical Nulls:</b></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>First Name</th>
+    <th>Gender</th>
+    <th>Team</th>
+  </tr>
+  <tr>
+    <td>Thomas</td>
+    <td>Male</td>
+    <td>Unknown</td>
+  </tr>
+</table>
+
+<p><b>Example - Before Replacing Numerical Nulls:</b></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>First Name</th>
+    <th>Salary</th>
+    <th>Bonus %</th>
+  </tr>
+  <tr>
+    <td>Douglas</td>
+    <td>97308</td>
+    <td>null</td>
+  </tr>
+</table>
+
+<p><b>Example - After Replacing Numerical Nulls:</b></p>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>First Name</th>
+    <th>Salary</th>
+    <th>Bonus %</th>
+  </tr>
+  <tr>
+    <td>Douglas</td>
+    <td>97308</td>
+    <td>0</td>
+  </tr>
+</table>
+      </div>
+
+      <!-- Question 3 -->
+
+      <div class="question">
+        <h2>3. Column Standardization</h2>
+        <ul>
+          <li>
+            Rename all columns by converting them to lowercase and replacing
+            spaces with underscores (eg. Column Name -> column_name).
+          </li>
+          <li>Display all the new column names in a list.</li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>Old Column Name</th>
+            <th>New Column Name</th>
+          </tr>
+          <tr>
+            <td>First Name</td>
+            <td>first_name</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 4 -->
+
+      <div class="question">
+        <h2>4. Employee Tenure Analysis</h2>
+        <ul>
+          <li>
+            Format the <code>Start Date</code> columns into
+            <code>dd-mm-yyyy</code> format .
+          </li>
+          <li>
+            Create a new column <code>years_of_service</code> and identify
+            employees who have completed more than 20 years in the company.
+          </li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>first_name</th>
+            <th>start_date</th>
+            <th>years_of_service</th>
+          </tr>
+          <tr>
+            <td>Douglas</td>
+            <td>06-08-1993</td>
+            <td>32</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 5 -->
+
+      <div class="question">
+        <h2>5. Salary and Bonus Calculation</h2>
+        <ul>
+          <li>
+            Create a new column <code>bonus_amount</code> using Salary and Bonus
+            % and calculate the total Salary amount by adding Bonus %.
+          </li>
+          <li>
+            Display the top 5 employees receiving the highest bonus amount.
+          </li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>first_name</th>
+            <th>salary</th>
+            <th>bonus_amount</th>
+          </tr>
+          <tr>
+            <td>Maria</td>
+            <td>130590</td>
+            <td>15489.98</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 6 -->
+
+      <div class="question">
+        <h2>6. Team-wise Salary Analysis</h2>
+        <ul>
+          <li>Calculate employee count for each Team.</li>
+          <li>Calculate average salary for each Team.</li>
+          <li>
+            Display the teams sorted by average salary in descending order.
+          </li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>team</th>
+            <th>employee_count</th>
+            <th>avg_salary</th>
+          </tr>
+          <tr>
+            <td>Finance</td>
+            <td>5</td>
+            <td>102754.20</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 7 -->
+
+      <div class="question">
+        <h2>7. Senior Management Insights</h2>
+        <ul>
+          <li>
+            Calculate the average salary of employees who belong to Senior
+            Management and those who do not.
+          </li>
+          <li>Identify which group has the higher average salary.</li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>senior_management</th>
+            <th>avg_salary</th>
+          </tr>
+          <tr>
+            <td>True</td>
+            <td>103542.12</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 8 -->
+
+      <div class="question">
+        <h2>8. Salary Outlier Detection</h2>
+        <ul>
+          <li>Calculate the mean and standard deviation of Salary.</li>
+          <li>
+            Identify employees whose salary is greater than
+            <code>Mean + 2 × Standard Deviation.</code>
+          </li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>first_name</th>
+            <th>salary</th>
+            <th>outlier_flag</th>
+          </tr>
+          <tr>
+            <td>Rachel</td>
+            <td>142032</td>
+            <td>Yes</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 9 -->
+
+      <div class="question">
+        <h2>9. Gender-wise Salary Distribution</h2>
+        <ul>
+          <li>
+            Calculate employee count, average salary and maximum salary for each
+            Gender.
+          </li>
+          <li>Sort the result by average salary descending.</li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>gender</th>
+            <th>employee_count</th>
+            <th>avg_salary</th>
+            <th>max_salary</th>
+          </tr>
+          <tr>
+            <td>Female</td>
+            <td>20</td>
+            <td>95432.56</td>
+            <td>145146</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Question 10 -->
+
+      <div class="question">
+        <h2>10. Employee Grading Challenge</h2>
+        <ul>
+          <li>
+            Create a new column <code>employee_grade</code> based on Salary:
+            <ul>
+              <li>Grade A : Salary ≥ 120000</li>
+              <li>Grade B : Salary between 90000 and 119999</li>
+              <li>Grade C : Salary between 60000 and 89999</li>
+              <li>Grade D : Salary &lt; 60000</li>
+            </ul>
+          </li>
+          <li>Calculate employee count and average salary for each grade.</li>
+        </ul>
+        <p><b>Example Output:</b></p>
+
+        <table border="1" cellpadding="5">
+          <tr>
+            <th>employee_grade</th>
+            <th>employee_count</th>
+            <th>avg_salary</th>
+          </tr>
+          <tr>
+            <td>Grade A</td>
+            <td>8</td>
+            <td>132456.75</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Tranzita Systems — Data Engineering Interview | Python & Pandas Track
+    </footer>
+  </body>
+</html>
